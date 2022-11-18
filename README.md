@@ -53,10 +53,7 @@
 	``` json
 	"require": {
 		... 
-		"weimob-cloud/php-wos-spi-sdk": "${last_version}",
-		"weimob-cloud/php-wos-msg-sdk": "${last_version}",
-		"weimob-cloud/php-xinyun-spi-sdk": "${last_version}",
-		"weimob-cloud/php-xinyun-msg-sdk": "${last_version}"
+		"weimob-cloud/php-project-boot": "${last_version}"
 	}
 	```
 2. 安装包，使用composer命令
