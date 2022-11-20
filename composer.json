@@ -2,7 +2,7 @@
     "name": "weimob-cloud/php-project-boot",
     "type": "library",
     "license": "MIT",
-    "description": "WeimobCloud PHP Application",
+    "description": "WeimobCloud PHP Application Boot",
     "authors": [
         {
             "name": "weimob-tech",

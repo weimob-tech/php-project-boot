@@ -15,10 +15,10 @@ class WeimobHttpUtil extends BaseFramework
      * 调用weimob api接口
      * @param string $relativePath http接口地址（不包含域名）
      * @param String $accessToken accessToken
-     * @param mixed $requestBody 请求对象体
+     * @param $requestBody 请求对象体
      * @return string
      */
-    public function invokeApi(string $relativePath, string $accessToken, mixed $requestBody):string
+    public function invokeApi(string $relativePath, string $accessToken, $requestBody):string
     {
         /** @var EnvUtil $envUtil*/
         $envUtil = $this->getContainer()->get('envUtil');
@@ -37,7 +37,7 @@ class WeimobHttpUtil extends BaseFramework
         /** @var HttpClientWrapper $client */
         $client = $this->getContainer()->get('httpClient');
 
-        $apiPath = sprintf("%s/%s", $baseUrl, $accessToken);
+        $apiPath = sprintf("%s/%s?accesstoken=%s", $baseUrl, $relativePath, $accessToken);
         $r = $client->post($apiPath, null, json_encode($requestBody));
 
         return $r->getBody();

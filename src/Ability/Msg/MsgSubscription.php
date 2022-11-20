@@ -141,7 +141,6 @@ class MsgSubscription extends BaseFramework
 
         $messageRegistryInfoDTO = new MessageRegistryInfoDTO();
         //$messageRegistryInfoDTO->setHostAddress($envUtil->getHostName());
-        $messageRegistryInfoDTO->setHostAddress("192.168.200.100");
         if($spiVersion === null or $spiVersion === SpecTypeEnum::WOS){
             $messageRegistryInfoDTO->setPath("weimob/cloud/wos/message/receive");
             $messageRegistryInfoDTO->setSpecsType(SpecTypeEnum::WOS);

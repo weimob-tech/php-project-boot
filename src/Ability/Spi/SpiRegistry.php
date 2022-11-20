@@ -129,7 +129,7 @@ class SpiRegistry extends BaseFramework
         $ref = new ReflectionClass($class);
 
         $spiRegistryInfoDTO = new SpiRegistryInfoDTO();
-        $spiRegistryInfoDTO->setImplFullName($ref->getName());
+        $spiRegistryInfoDTO->setImplFullName(str_replace('\\','.',$ref->getName()));
         $spiRegistryInfoDTO->setBeanName($spiInfo);
         $spiInterface = $this->getSpiInterface($class, $spiVersion);
         if(!empty($spiInterface)) {

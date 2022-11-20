@@ -26,6 +26,7 @@ use WeimobCloudBoot\Util\DataSecurityUtil;
 use WeimobCloudBoot\Util\EnvUtil;
 use WeimobCloudBoot\Util\OauthUtil;
 use WeimobCloudBoot\Util\ObjectConvertUtil;
+use WeimobCloudBoot\Util\WeimobHttpUtil;
 
 class Bootstrap
 {
