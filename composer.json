@@ -5,8 +5,8 @@
     "description": "WeimobCloud PHP Application",
     "authors": [
         {
-            "name": "junwei.ye",
-            "email": "junwei.ye@weimob.com"
+            "name": "weimob-tech",
+            "email": "Weimob-tech@weimob.com"
         }
     ],
     "config": {
@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=7.2.3",
         "ext-PDO": "*",
         "ext-redis": "*",
         "guzzlehttp/guzzle": "^6.3|^7.0",
