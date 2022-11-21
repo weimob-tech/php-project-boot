@@ -4,6 +4,7 @@ namespace WeimobCloudBoot\Util;
 
 use WeimobCloudBoot\Boot\BaseFramework;
 use WeimobCloudBoot\Component\Oauth\AccessToken;
+use WeimobCloudBoot\Exception\OauthException;
 
 class OauthUtil extends BaseFramework
 {

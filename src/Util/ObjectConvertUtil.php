@@ -5,6 +5,7 @@ namespace WeimobCloudBoot\Util;
 use ReflectionClass;
 use ReflectionMethod;
 use WeimobCloudBoot\Boot\BaseFramework;
+use WeimobCloudBoot\Exception\SpiHandleException;
 
 class ObjectConvertUtil extends BaseFramework
 {

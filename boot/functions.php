@@ -3,6 +3,7 @@
 use Psr\Container\ContainerInterface;
 use \Slim\App;
 use WeimobCloudBoot\Ability\AbilityRegistryWrapper;
+use WeimobCloudBoot\Facade\LogFacade;
 
 function initEnv()
 {
@@ -57,9 +58,13 @@ function initFrameConfig(App $app)
 //能力注册发现
 function initAbility(ContainerInterface $container): AbilityRegistryWrapper{
     if (defined('WMCLOUD_BOOT_APP_DIR')) {
-        $registered = getAndSetRegistered();
+        try {
+            $registered = getAndSetRegistered();
+        }catch (Throwable $exception){
+            LogFacade::info(sprintf("共享内存获取值,值为:%s",$exception->getMessage()));
+        }
         if (empty($registered)) {
-
+            LogFacade::info("开始注册能力");
             $spiRegistry = $container->get("spiRegistry");
             (function () use ($spiRegistry) {
                 require(WMCLOUD_BOOT_APP_DIR . '/config/spiRegistry.php');
@@ -69,6 +74,7 @@ function initAbility(ContainerInterface $container): AbilityRegistryWrapper{
             (function () use ($msgSubscription) {
                 require(WMCLOUD_BOOT_APP_DIR . '/config/msgSubscription.php');
             })();
+            LogFacade::info("结束注册能力");
 
             $wrapper = new AbilityRegistryWrapper();
             $wrapper->spiRegistry = $spiRegistry;
@@ -99,16 +105,16 @@ function running(App $app, AbilityRegistryWrapper $wrapper){
 
 function getAndSetRegistered():bool
 {
-    $shm_key = 0;
-    $shm_id = @shmop_open($shm_key, 'c', 0644, 32);
-//读取并写入数据
+    $shm_key = ftok(__FILE__, 't');
+    $shm_id = shmop_open($shm_key, 'c', 0644, 32);
+    //读取并写入数据
     $data = shmop_read($shm_id, 0, 32);
     $data = trim($data);
     if(!empty($data)){
         return true;
     }
     shmop_write($shm_id, "true", 0);
-//关闭内存块，并不会删除共享内存，只是清除 PHP 的资源
+    //关闭内存块，并不会删除共享内存，只是清除 PHP 的资源
     shmop_close($shm_id);
     return false;
 }

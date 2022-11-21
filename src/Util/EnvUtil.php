@@ -104,11 +104,7 @@ class EnvUtil extends BaseFramework
     private function getFromEnv(string $key): ?string
     {
         $key = str_replace('.', '_', $key);
-        if (isset($_SERVER[$key])) {
-            return $_SERVER[$key];
-        }
-
-        return null;
+        return getenv($key);
     }
 
     public function getAppName(): ?string
@@ -118,22 +114,22 @@ class EnvUtil extends BaseFramework
 
     public function getPostUrl(): ?string
     {
-        return $_SERVER['postUrl'];
+        return getenv('postUrl');
     }
 
     public function getApolloMetaServer(): ?string
     {
-        return $_SERVER['apollo.meta'];
+        return getenv('apollo.meta');
     }
 
     public function getAppId(): ?string
     {
-        return $_SERVER['APP_ID'];
+        return getenv('APP_ID');
     }
 
     public function getWeimobCloudAppId(): ?string
     {
-        return $_SERVER['weimob_cloud_appId'];
+        return getenv('weimob_cloud_appId');
     }
 
     public function getAppSecret(): ?string
@@ -143,7 +139,7 @@ class EnvUtil extends BaseFramework
 
     public function getEnv(): ?string
     {
-        return $_SERVER['weimob_cloud_env'];
+        return getenv('weimob_cloud_env');
     }
 
     public function getLogLevel(): int
@@ -167,7 +163,7 @@ class EnvUtil extends BaseFramework
      */
     public static function getHostName(): ?string
     {
-        return $_SERVER['SERVER_ADDR'];
+        return getenv('SERVER_ADDR');
     }
 
     public function getClientInfos(): ?array

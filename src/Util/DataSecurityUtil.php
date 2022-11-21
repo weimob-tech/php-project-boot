@@ -5,6 +5,7 @@ namespace WeimobCloudBoot\Util;
 use WeimobCloudBoot\Boot\BaseFramework;
 use WeimobCloudBoot\Component\Encryption\DataSecurity;
 use WeimobCloudBoot\Exception\ApiFailException;
+use WeimobCloudBoot\Exception\OauthException;
 
 class DataSecurityUtil extends BaseFramework
 {
