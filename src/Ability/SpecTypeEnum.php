@@ -9,6 +9,8 @@ class SpecTypeEnum
     const WOS_SPI_METHOD_NAME = "invoke";
     const XINYUN_SPI_METHOD_NAME = "execute";
 
+    const SPI_REGISTER_METHOD_NAME = "excute";
+
     const WOS_SPI_INTERFACE_CLASS_PACKAGE = 'WeimobAbility\Weimob\Wos\Cloud\Spi';
     const XINYUN_SPI_INTERFACE_CLASS_PACKAGE = 'WeimobAbility\Weimob\Xinyun\Cloud\Spi';
 

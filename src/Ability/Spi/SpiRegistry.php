@@ -138,7 +138,7 @@ class SpiRegistry extends BaseFramework
                 $spiRegistryInfoDTO->setInterfaceName(substr($spiInterface,$pos+1));
             }
         }
-        $spiRegistryInfoDTO->setMethodName(SpecTypeEnum::XINYUN_SPI_METHOD_NAME);
+        $spiRegistryInfoDTO->setMethodName(SpecTypeEnum::SPI_REGISTER_METHOD_NAME);
         $spiRegistryInfoDTO->setSpiBelongType($spiVersion);
 
         $registryDTO = new RegistryDTO();
