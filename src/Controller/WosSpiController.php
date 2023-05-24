@@ -50,7 +50,7 @@ class WosSpiController extends BaseFramework
         $parameterType = $parameters[0]->getType();
 
         $jsonDecoder = new JsonMapper();
-        $tempObj = $jsonDecoder->map(json_decode($spiBody),new $parameterType());
+        $tempObj = $jsonDecoder->map(json_decode($spiBody),$parameterType->getName());
 
         return $method->invoke($spiInstance, $tempObj);
     }

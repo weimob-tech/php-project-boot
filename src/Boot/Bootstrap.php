@@ -97,6 +97,15 @@ class Bootstrap
         $container['weimobHttpUtil'] = function (ContainerInterface $container) {
             return new WeimobHttpUtil($container);
         };
+        $container['registered'] = function (ContainerInterface $container) {
+            $registered = null;
+            try {
+                $registered = getAndSetRegistered();
+            }catch (Throwable $exception){
+                LogFacade::info(sprintf("共享内存获取值,值为:%s",$exception->getMessage()));
+            }
+            return $registered;
+        };
         return $container;
     }
 

@@ -58,30 +58,23 @@ function initFrameConfig(App $app)
 //能力注册发现
 function initAbility(ContainerInterface $container): AbilityRegistryWrapper{
     if (defined('WMCLOUD_BOOT_APP_DIR')) {
-        try {
-            $registered = getAndSetRegistered();
-        }catch (Throwable $exception){
-            LogFacade::info(sprintf("共享内存获取值,值为:%s",$exception->getMessage()));
-        }
-        if (empty($registered)) {
-            LogFacade::info("开始注册能力");
-            $spiRegistry = $container->get("spiRegistry");
-            (function () use ($spiRegistry) {
-                require(WMCLOUD_BOOT_APP_DIR . '/config/spiRegistry.php');
-            })();
+        LogFacade::info("开始注册能力");
+        $spiRegistry = $container->get("spiRegistry");
+        (function () use ($spiRegistry) {
+            require(WMCLOUD_BOOT_APP_DIR . '/config/spiRegistry.php');
+        })();
 
-            $msgSubscription = $container->get("msgSubscription");
-            (function () use ($msgSubscription) {
-                require(WMCLOUD_BOOT_APP_DIR . '/config/msgSubscription.php');
-            })();
-            LogFacade::info("结束注册能力");
+        $msgSubscription = $container->get("msgSubscription");
+        (function () use ($msgSubscription) {
+            require(WMCLOUD_BOOT_APP_DIR . '/config/msgSubscription.php');
+        })();
+        LogFacade::info("结束注册能力");
 
-            $wrapper = new AbilityRegistryWrapper();
-            $wrapper->spiRegistry = $spiRegistry;
-            $wrapper->msgSubscription = $msgSubscription;
+        $wrapper = new AbilityRegistryWrapper();
+        $wrapper->spiRegistry = $spiRegistry;
+        $wrapper->msgSubscription = $msgSubscription;
 
-            return $wrapper;
-        }
+        return $wrapper;
     }
 
     return new AbilityRegistryWrapper();
