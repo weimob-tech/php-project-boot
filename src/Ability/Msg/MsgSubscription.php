@@ -35,7 +35,10 @@ class MsgSubscription extends BaseFramework
             return;
         }
 
-        $this->registerServiceInfo($msgInfo, $class, $msgVersion);
+        $registered = $this->getContainer()->get('registered');
+        if (empty($registered)) {
+            $this->registerServiceInfo($msgInfo, $class, $msgVersion);
+        }
         $this->beanPool[$this->getMsgKey($msgInfo,$msgVersion)] = ["msgInfo"=>$msgInfo,"instanceClass"=>$class,"msgVersion"=>$msgVersion];
     }
 

@@ -24,8 +24,10 @@ class SpiRegistry extends BaseFramework
         {
             return;
         }
-
-        $this->registerServiceInfo($spiInfo, $class, $spiVersion);
+        $registered = $this->getContainer()->get('registered');
+        if (empty($registered)) {
+            $this->registerServiceInfo($spiInfo, $class, $spiVersion);
+        }
         $this->beanPool[$this->getSpiKey($spiInfo,$spiVersion)] = ["spiInfo"=>$spiInfo,"instanceClass"=>$class,"spiVersion"=>$spiVersion];
     }
 
