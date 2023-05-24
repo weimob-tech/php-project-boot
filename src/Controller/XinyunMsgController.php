@@ -18,11 +18,11 @@ class XinyunMsgController extends BaseFramework
 {
     public function handle(Request $request, Response $response, array $args){
         try {
-            $msgBody = $request->getParsedBody();
+            $msgBody = $request->getBody();
 
             $jsonDecoder = new JsonMapper();
             /** @var XinyunOpenMessage $xinyunOpenMessage */
-            $xinyunOpenMessage = $jsonDecoder->map($msgBody, new XinyunOpenMessage());
+            $xinyunOpenMessage = $jsonDecoder->map(json_decode($msgBody), new XinyunOpenMessage());
             $msgInfo = new MsgInfo($xinyunOpenMessage->getTopic(), $xinyunOpenMessage->getEvent());
 
             $specType = $xinyunOpenMessage->getSpecsType();

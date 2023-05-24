@@ -19,11 +19,11 @@ class WosMsgController extends BaseFramework
 {
     public function handle(Request $request, Response $response, array $args){
         try {
-            $msgBody = $request->getParsedBody();
+            $msgBody = $request->getBody();
 
             $jsonDecoder = new JsonMapper();
             /** @var WosOpenMessage $wosOpenMessage */
-            $wosOpenMessage = $jsonDecoder->map($msgBody, new WosOpenMessage());
+            $wosOpenMessage = $jsonDecoder->map(json_decode($msgBody), new WosOpenMessage());
             $msgInfo = new MsgInfo($wosOpenMessage->getTopic(), $wosOpenMessage->getEvent());
 
             $specType = $wosOpenMessage->getSpecsType();
