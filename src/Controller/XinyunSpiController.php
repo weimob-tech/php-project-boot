@@ -53,8 +53,16 @@ class XinyunSpiController extends BaseFramework
         $parameters = $method->getParameters();
         $parameterType = $parameters[0]->getType();
 
+        $requestClass = new ReflectionClass($parameterType->getName());
+        $getParamsMethod = $requestClass->getMethod("getParams");
+
         $jsonDecoder = new JsonMapper();
-        $tempObj = $jsonDecoder->map(json_decode($spiBody),$parameterType->getName());
+        $tempSpiBody = json_decode($spiBody);
+        $tempObj = $jsonDecoder->map($tempSpiBody,$parameterType->getName());
+
+        $params = $jsonDecoder->map(json_decode($tempSpiBody->params),$getParamsMethod->getReturnType()->getName());
+
+        $tempObj->setParams($params);
 
         if (!empty($pidStr) && is_numeric($pidStr)) {
             $pid = (int)$pidStr;
