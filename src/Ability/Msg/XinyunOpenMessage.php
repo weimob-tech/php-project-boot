@@ -352,7 +352,7 @@ class XinyunOpenMessage implements \JsonSerializable
     /**
      * @return string
      */
-    public function getSaasChannel(): string
+    public function getSaasChannel(): ?string
     {
         return $this->saas_channel;
     }
@@ -360,7 +360,7 @@ class XinyunOpenMessage implements \JsonSerializable
     /**
      * @param string $saas_channel
      */
-    public function setSaasChannel(string $saas_channel): void
+    public function setSaasChannel(?string $saas_channel): void
     {
         $this->saas_channel = $saas_channel;
     }
@@ -368,7 +368,7 @@ class XinyunOpenMessage implements \JsonSerializable
     /**
      * @return string
      */
-    public function getSaasClientId(): string
+    public function getSaasClientId(): ?string
     {
         return $this->saas_clientId;
     }
@@ -376,7 +376,7 @@ class XinyunOpenMessage implements \JsonSerializable
     /**
      * @param string $saas_clientId
      */
-    public function setSaasClientId(string $saas_clientId): void
+    public function setSaasClientId(?string $saas_clientId): void
     {
         $this->saas_clientId = $saas_clientId;
     }

@@ -73,7 +73,7 @@ class XinyunMsgController extends BaseFramework
         $paramInstance->setSign($xinyunOpenMessage->getSign());
         $paramInstance->setMsgSignature($xinyunOpenMessage->getMsgSignature());
         $paramInstance->setSaasChannel($xinyunOpenMessage->getSaasChannel());
-        $paramInstance->setSaasClient($xinyunOpenMessage->getSaasClient());
+        $paramInstance->setSaasClientId($xinyunOpenMessage->getSaasClientId());
 
         $paramInstance->setMsgBody($busiParamInstance);
 

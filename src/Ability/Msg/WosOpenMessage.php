@@ -222,7 +222,7 @@ class WosOpenMessage implements \JsonSerializable
     /**
      * @return string
      */
-    public function getSaasChannel(): string
+    public function getSaasChannel(): ?string
     {
         return $this->saasChannel;
     }
@@ -230,7 +230,7 @@ class WosOpenMessage implements \JsonSerializable
     /**
      * @param string $saasChannel
      */
-    public function setSaasChannel(string $saasChannel): void
+    public function setSaasChannel(?string $saasChannel): void
     {
         $this->saasChannel = $saasChannel;
     }
@@ -238,7 +238,7 @@ class WosOpenMessage implements \JsonSerializable
     /**
      * @return string
      */
-    public function getSaasClientId(): string
+    public function getSaasClientId(): ?string
     {
         return $this->saasClientId;
     }
@@ -246,7 +246,7 @@ class WosOpenMessage implements \JsonSerializable
     /**
      * @param string $saasClientId
      */
-    public function setSaasClientId(string $saasClientId): void
+    public function setSaasClientId(?string $saasClientId): void
     {
         $this->saasClientId = $saasClientId;
     }
