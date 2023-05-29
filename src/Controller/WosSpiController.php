@@ -33,11 +33,11 @@ class WosSpiController extends BaseFramework
             $spiBody = $request->getBody();
 
             $result = $this->invokeMethod($spiInstance, $methodName, $spiBody);
-            return $response->withJson(json_encode($result));
+            return $response->withJson($result);
         }catch (Throwable $ex){
             LogFacade::info(sprintf("服务器内部错误,ex: %s", $ex->getMessage()));
             $result = ["code"=>["errcode"=>"0500","errmsg"=>"Invoke spi service method error！"]];
-            return $response->withJson(json_encode($result));
+            return $response->withJson($result);
         }
     }
 
