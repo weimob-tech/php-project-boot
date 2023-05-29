@@ -58,6 +58,18 @@ class WosOpenMessage implements \JsonSerializable
      */
     private $specsType;
 
+    /**
+     * saas渠道
+     * @var string
+     */
+    private $saasChannel;
+
+    /**
+     * saas客户端id
+     * @var string
+     */
+    private $saasClientId;
+
     public function jsonSerialize()
     {
         return get_object_vars($this);
@@ -205,5 +217,37 @@ class WosOpenMessage implements \JsonSerializable
     public function setSpecsType(?int $specsType): void
     {
         $this->specsType = $specsType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSaasChannel(): string
+    {
+        return $this->saasChannel;
+    }
+
+    /**
+     * @param string $saasChannel
+     */
+    public function setSaasChannel(string $saasChannel): void
+    {
+        $this->saasChannel = $saasChannel;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSaasClientId(): string
+    {
+        return $this->saasClientId;
+    }
+
+    /**
+     * @param string $saasClientId
+     */
+    public function setSaasClientId(string $saasClientId): void
+    {
+        $this->saasClientId = $saasClientId;
     }
 }
