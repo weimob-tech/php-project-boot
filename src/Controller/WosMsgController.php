@@ -72,7 +72,7 @@ class WosMsgController extends BaseFramework
 
         $paramInstance->setSign($wosOpenMessage->getSign());
         $paramInstance->setSaasChannel($wosOpenMessage->getSaasChannel());
-        $paramInstance->setSaasClient($wosOpenMessage->getSaasClient());
+        $paramInstance->setSaasClientId($wosOpenMessage->getSaasClientId());
         $paramInstance->setMsgBody($busiParamInstance);
 
         return $method->invoke($msgInstance, $paramInstance);
