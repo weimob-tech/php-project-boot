@@ -32,7 +32,7 @@ class XinyunSpiController extends BaseFramework
             if (empty($spiInstance)) {
                 LogFacade::info(sprintf("Cannot find spi service bean!,beanName: %s", $beanName));
                 $result = ["code" => ["errcode" => "0404", "errmsg" => "Cannot find spi service bean!"]];
-                return $response->withJson(json_encode($result));
+                return $response->withJson($result);
             }
             $spiBody = $request->getBody();
 

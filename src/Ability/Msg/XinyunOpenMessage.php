@@ -92,6 +92,18 @@ class XinyunOpenMessage implements \JsonSerializable
      */
     private $specsType;
 
+    /**
+     * saas渠道
+     * @var string
+     */
+    private $saas_channel;
+
+    /**
+     * saas客户端id
+     * @var string
+     */
+    private $saas_clientId;
+
     public function jsonSerialize()
     {
         return get_object_vars($this);
@@ -335,5 +347,37 @@ class XinyunOpenMessage implements \JsonSerializable
     public function setSpecsType(?int $specsType): void
     {
         $this->specsType = $specsType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSaasChannel(): string
+    {
+        return $this->saas_channel;
+    }
+
+    /**
+     * @param string $saas_channel
+     */
+    public function setSaasChannel(string $saas_channel): void
+    {
+        $this->saas_channel = $saas_channel;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSaasClientId(): string
+    {
+        return $this->saas_clientId;
+    }
+
+    /**
+     * @param string $saas_clientId
+     */
+    public function setSaasClientId(string $saas_clientId): void
+    {
+        $this->saas_clientId = $saas_clientId;
     }
 }
