@@ -1,5 +1,6 @@
 <?php
 
+use Pachico\SlimSwoole\BridgeManager;
 use Psr\Container\ContainerInterface;
 use \Slim\App;
 use WeimobCloudBoot\Ability\AbilityRegistryWrapper;
@@ -88,7 +89,32 @@ function running(App $app, AbilityRegistryWrapper $wrapper){
             throw new Exception();
         }
 
-        $app->run();
+        $bridgeManager = new BridgeManager($app);
+        $http = new swoole_http_server("0.0.0.0", 8080);
+
+        /**
+         * We register the on "start" event
+         */
+        $http->on("start", function (\swoole_http_server $server) {
+            echo sprintf('Swoole http server is started at http://%s:%s', $server->host, $server->port), PHP_EOL;
+        });
+
+        /**
+         * We register the on "request event, which will use the BridgeManager to transform request, process it
+         * as a Slim request and merge back the response
+         *
+         */
+        $http->on(
+            "request",
+            function (swoole_http_request $swooleRequest, swoole_http_response $swooleResponse) use ($bridgeManager) {
+                $bridgeManager->process($swooleRequest, $swooleResponse)->end();
+            }
+        );
+
+        LogFacade::info("swoole服务启动");
+        $http->start();
+
+//        $app->run();
     } catch (Exception $e) {
         // do something
     }
