@@ -31,7 +31,8 @@
         "netresearch/jsonmapper": ">=4.0.0",
         "symfony/yaml": "^4.3",
         "workerman/workerman": "^3.5",
-        "ext-shmop": "*"
+        "ext-shmop": "*",
+        "pachico/slim-swoole":"0.3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
